@@ -51,7 +51,7 @@ class SysMLDAA(OntoDAA):
         self.qMgr = QueryManager(self.iri, owl.Thing, owl.World())
 
         cwd = os.getcwd()
-        pathIn = cwd+"\\ontologies"
+        pathIn = os.path.join(cwd,"ontologies")
         files = os.listdir(pathIn)
         for f in files:
             self.qMgr.getOntologyFile(pathIn,f)
@@ -65,7 +65,7 @@ class SysMLDAA(OntoDAA):
         
         # populate dictionary
         cwd = os.getcwd()
-        pathIn = cwd+"\\ontologies"        
+        pathIn = os.path.join(cwd, "ontologies")
         files = os.listdir(pathIn)
         for f in files:
             self.qMgr.getOntologyFile(pathIn,f)

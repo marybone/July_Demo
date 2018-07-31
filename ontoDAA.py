@@ -849,7 +849,7 @@ class JsonParser(OntoDataInterface):
     def parseFile(self, pathIn, fileIn, kwd):
         # reads a JSON file into the JsonParser object, appends its elements to
         # the internal element list "parsed"
-        with open(pathIn + "\\" + fileIn) as file:
+        with open(os.path.join(pathIn, fileIn)) as file:
             jsonString = file.read()
         parse = JsonParser.getParsedJSON(self, jsonString, kwd)
         return parse
@@ -1172,7 +1172,7 @@ class OntoManager(object):
     def getOntologyFile(self, pathIn, fileIn):
         # pass the path to the triplestore manager
         owl.onto_path.append(pathIn)
-        onto = self.world.get_ontology(pathIn+"\\"+fileIn)
+        onto = self.world.get_ontology(os.path.join(pathIn, fileIn))
 
         try:  # attempt to load file
             # load ontology terms into dictionary
@@ -1352,6 +1352,7 @@ class QueryManager(OntoManager):
                 nspace = nspace.replace(".owl","")
                 nspace = nspace.replace("%20","_")
                 nspace = nspace.replace(".","")
+                nspace = nspace.replace(" ", "_")
                 prefix = "PREFIX "+nspace+": <"+ont+">\n"
                 if nspace not in self.nspace:
                     self.prefix += prefix

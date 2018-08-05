@@ -1346,13 +1346,12 @@ class QueryManager(OntoManager):
                     flag = pos
                 pos += 1
             nspace = ont[flag+1:]  
-            
+
             if "\\" not in ont:
                 nspace = nspace.replace("#","")    
                 nspace = nspace.replace(".owl","")
                 nspace = nspace.replace("%20","_")
                 nspace = nspace.replace(".","")
-                nspace = nspace.replace(" ", "_")
                 prefix = "PREFIX "+nspace+": <"+ont+">\n"
                 if nspace not in self.nspace:
                     self.prefix += prefix

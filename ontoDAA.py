@@ -1339,23 +1339,30 @@ class QueryManager(OntoManager):
       
     def toGraph(self):        
         for ont in self.world.ontologies:
-            # Extract the ontology Name:
+            # Extract the ontology IRI
+            ont = self.world.ontologies[ont].base_iri
+
+            # parse out the namespace from the ontology IRI
             pos = 0
-            for letter in ont:    
-                if letter == "/" or letter == "\\":
+            for letter in ont:
+                if letter == "/":
                     flag = pos
                 pos += 1
-            nspace = ont[flag+1:]  
 
-            if "\\" not in ont:
-                nspace = nspace.replace("#","")    
-                nspace = nspace.replace(".owl","")
-                nspace = nspace.replace("%20","_")
-                nspace = nspace.replace(".","")
-                prefix = "PREFIX "+nspace+": <"+ont+">\n"
-                if nspace not in self.nspace:
-                    self.prefix += prefix
-                    self.nspace.append(nspace)
+            # create namespaces used in queries
+            nspace = ont[flag+1:]
+
+            # remove illegal / inconvenient characters
+            nspace = nspace.replace("#","")
+            nspace = nspace.replace(".owl","")
+            nspace = nspace.replace("%20","_")
+            nspace = nspace.replace(".","")
+            prefix = "PREFIX "+nspace+": <"+ont+">\n"
+
+            # add to query prefix if it isn't there already - duplicates cause issues
+            if nspace not in self.nspace:
+                self.prefix += prefix
+                self.nspace.append(nspace)
         
         # send world to an rdflib graph
         qGraph = self.world.as_rdflib_graph()

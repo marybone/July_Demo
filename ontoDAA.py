@@ -214,21 +214,21 @@ class SysMLDAA(OntoDAA):
                                          classes, ids, qProps, 
                                          bProps, cProps, outer, dp)
         # Get info on the system parts that are sub-specs
-        classes = [[0, "Artifact Design"],
+        classes = [[0, "ArtifactDesignContentEntity"],
                    [1, "DirectiveInformationContentEntity"],
                    [3, "entity"],
                    [4, "IAO_0000100"],
-                   [6, "Artifact Design"]]
+                   [6, "ArtifactDesignContentEntity"]]
         
         ids = ["_alternative", "_spec", "_trait", "_dset", "_part"]
         
         qProps = []
         
         bProps = [[0, 1, "has part"], 
-                  [1, 2, "is specification for"],
-                  [3, 0, "is about"],
+                  [1, 2, "is_specification_for"],
+                  [3, 0, "is_about"],
                   [1, 4, "specifies"],
-                  [1, 4, "has part"]]
+                  [1, 4, "has_part"]]
         
         cProps = [[0, 0, "represents"],
                   [1, 1, "represents"],
@@ -269,23 +269,23 @@ class SysMLDAA(OntoDAA):
                                          bProps, cProps, outer, dp)
 
         ## get sub-parts of system sub-parts
-        classes = [[0, "Artifact Design"],
+        classes = [[0, "ArtifactDesignContentEntity"],
                    [1, "Artifact Design"],
                    [2, "DirectiveInformationContentEntity"],
-                   [3, "Artifact Design"],
+                   [3, "ArtifactDesignContentEntity"],
                    [4, "entity"]]
         
         ids = ["_alternative", "_part", "_spec", "_part", "_trait"]
         
         qProps = []
         
-        bProps = [[0, 1, "has part"], 
-                  [1, 2, "has part"],
+        bProps = [[0, 1, "has_part"],
+                  [1, 2, "has_part"],
                   [2, 3, "specifies"],
-                  [1, 3, "has part"],
-                  [2, 4, "is about"],
-                  [0, 3, "has part"],
-                  [3, 4, "is specification for"]]
+                  [1, 3, "has_part"],
+                  [2, 4, "is_about"],
+                  [0, 3, "has_part"],
+                  [3, 4, "is_specification_for"]]
         
         cProps = [[0, 0, "represents"],
                   [1, 1, "represents"],
@@ -321,10 +321,10 @@ class SysMLDAA(OntoDAA):
         
         ## get sub-parts attributes of system sub-sub-parts
         
-        classes = [[0, "Artifact Design"],
-                   [1, "Artifact Design"],
+        classes = [[0, "ArtifactDesignContentEntity"],
+                   [1, "ArtifactDesignContentEntity"],
                    [2, "DirectiveInformationContentEntity"],
-                   [3, "Artifact Design"],
+                   [3, "ArtifactDesignContentEntity"],
                    [4, "entity"],
                    [8, "DirectiveInformationContentEntity"],
                    [9, "entity"]]
@@ -333,15 +333,15 @@ class SysMLDAA(OntoDAA):
         
         qProps = []
         
-        bProps = [[0, 1, "has part"], 
-                  [1, 2, "has part"],
+        bProps = [[0, 1, "has_part"],
+                  [1, 2, "has_part"],
                   [2, 3, "specifies"],
-                  [1, 3, "has part"],
-                  [2, 4, "is about"],
-                  [0, 3, "has part"],
-                  [3, 4, "is specification for"],
-                  [3, 5, "has part"],
-                  [5, 6, "is specification for"],
+                  [1, 3, "has_part"],
+                  [2, 4, "is_about"],
+                  [0, 3, "has_part"],
+                  [3, 4, "is_specification_for"],
+                  [3, 5, "has_part"],
+                  [5, 6, "is_specification_for"],
                   [0, 5, "specifies"]]
         
         cProps = [[0, 0, "represents"],
@@ -383,10 +383,10 @@ class SysMLDAA(OntoDAA):
                                          bProps, cProps, outer, dp)
 
         # get sub-parts attributes of system sub-sub-parts
-        classes = [[0, "Artifact Design"],
-                   [1, "Artifact Design"],
+        classes = [[0, "ArtifactDesignContentEntity"],
+                   [1, "ArtifactDesignContentEntity"],
                    [2, "DirectiveInformationContentEntity"],
-                   [3, "Artifact Design"],
+                   [3, "ArtifactDesignContentEntity"],
                    [4, "entity"],
                    [8, "DirectiveInformationContentEntity"],
                    [9, "entity"]]
@@ -395,15 +395,15 @@ class SysMLDAA(OntoDAA):
         
         qProps = []
         
-        bProps = [[0, 1, "has part"], 
-                  [1, 2, "has part"],
+        bProps = [[0, 1, "has_part"],
+                  [1, 2, "has_part"],
                   [2, 3, "specifies"],
-                  [1, 3, "has part"],
-                  [2, 4, "is about"],
-                  [0, 3, "has part"],
-                  [3, 4, "is specification for"],
-                  [3, 5, "has part"],
-                  [5, 6, "is specification for"],
+                  [1, 3, "has_part"],
+                  [2, 4, "is_about"],
+                  [0, 3, "has_part"],
+                  [3, 4, "is_specification_for"],
+                  [3, 5, "has_part"],
+                  [5, 6, "is_specification_for"],
                   [0, 5, "specifies"]]
         
         cProps = [[0, 0, "represents"],
@@ -414,7 +414,7 @@ class SysMLDAA(OntoDAA):
         
         outer = []
         
-        dp = [[4, 5, "name_dp"], [3, 6, "name_dp"],  [5, 7,"specifies value"], [6, 10, "name_dp"]]
+        dp = [[4, 5, "name_dp"], [3, 6, "name_dp"],  [5, 7,"specifies_value"], [6, 10, "name_dp"]]
         q = """
         SELECT ?system ?pinst ?slot ?eng ?class ?name ?engName ?prop ?pslot ?ptype ?pname
         WHERE 
@@ -445,19 +445,19 @@ class SysMLDAA(OntoDAA):
                                          bProps, cProps, outer, dp)
 
         # get sub-attributes of system sub-parts
-        classes = [[0, "Artifact Design"],
-                   [1, "Artifact Design"],
+        classes = [[0, "ArtifactDesignContentEntity"],
+                   [1, "ArtifactDesignContentEntity"],
                    [2, "DirectiveInformationContentEntity"],
-                   [3, "specifically dependent continuant"]]
+                   [3, "BFO_0000020"]]
         
         ids = ["_alternative", "_part", "_spec", "_trait"]
         
         qProps = []
         
-        bProps = [[0, 1, "has part"],
-                  [1, 2, "has part"],
+        bProps = [[0, 1, "has_part"],
+                  [1, 2, "has_part"],
                   [2, 3, "specifies"],
-                  [1, 3, "bearer of"]]
+                  [1, 3, "bearer_of"]]
 
         cProps = [[0, 0, "represents"],
                   [1, 1, "represents"],
@@ -495,15 +495,15 @@ class SysMLDAA(OntoDAA):
                    [2, "IAO_0000100"],
                    [3, "estimate"],
                    [4, "IAO_0000100"],
-                   [0, "measurement type specification"]] 
+                   [0, "measurement_specification"]]
         
         ids = ["_model", "_dset", "_est", "_dset", "_spec"]
         
         qProps = []
         
-        bProps = [[2, 0, "has basis"], 
-                  [3, 1, "has basis"],
-                  [1, 2, "has part"],
+        bProps = [[2, 0, "has_basis"],
+                  [3, 1, "has_basis"],
+                  [1, 2, "has_part"],
                   [4, 0, "specifies"]]
         
         cProps = [[0, 4, "represents"],
@@ -540,20 +540,20 @@ class SysMLDAA(OntoDAA):
         
         classes = [[0, "measurement type specification"],
                    [1, "model"],
-                   [2, "process profile"],
+                   [2, "BFO_0000144"],
                    [3, "IAO_0000100"],
                    [4, "estimate"],
-                   [2, "specifically dependent continuant"]]
+                   [2, "BFO_0000020"]]
         
         ids = ["_spec", "_model", "_metric", "_dset", "_est", "_trait"]
         
         qProps = []
         
         bProps = [[0, 1, "specifies"], 
-                  [1, 2, "is model of"],
-                  [3, 4, "has part"],
-                  [0, 5, "is about"],
-                  [4, 2, "is a measurement of"],
+                  [1, 2, "is_model_of"],
+                  [3, 4, "has_part"],
+                  [0, 5, "is_about"],
+                  [4, 2, "is_a_measurement_of"],
                   [4, 5, "is_metric_of"]]
         
         cProps = [[0, 0, "represents"],
@@ -591,7 +591,7 @@ class SysMLDAA(OntoDAA):
         
         # Add KPP  designation
         qProps, bProps, cProps, dp = [], [], [], []
-        classes = [[0, "specifically dependent continuant"]]
+        classes = [[0, "BFO_0000020"]]
         ids = ["_trait"]
         outer = [[0, "designates", des]]
         dp = []
@@ -608,7 +608,7 @@ class SysMLDAA(OntoDAA):
                                          bProps, cProps, outer) 
           
         # Link Measure data set back to teh specific Alternatives
-        classes = [[0, "Artifact Design"],
+        classes = [[0, "ArtifactDesignContentEntity"],
                    [1, "IAO_0000100"]]
         ids = ["_alternative", "_dset"]
         qProps = []
@@ -631,7 +631,7 @@ class SysMLDAA(OntoDAA):
         
         # Read out the INTERMEDIATE Value Results - these don't link to measure space
         
-        classes = [[0, "measurement type specification"],
+        classes = [[0, "measurement_specification"],
                    [0, "model"],
                    [0, "preference"],
                    [1, "model"],
@@ -645,15 +645,15 @@ class SysMLDAA(OntoDAA):
         qProps = []
         
         bProps = [[0, 1, "specifies"],
-                  [0, 2, "is about"],
-                  [1, 2, "is model of"],
-                  [2, 4, "has part"],
-                  [3, 4, "is model of"],
+                  [0, 2, "is_about"],
+                  [1, 2, "is_model_of"],
+                  [2, 4, "has_part"],
+                  [3, 4, "is_model_of"],
                   [0, 3, "specifies"],
-                  [6, 3, "has basis"],
-                  [5, 6, "has part"],
-                  [6, 4, "is a measurement of"],
-                  [5, 7, "has basis"]]
+                  [6, 3, "has_basis"],
+                  [5, 6, "has_part"],
+                  [6, 4, "is_a_measurement_of"],
+                  [5, 7, "has_basis"]]
         
         cProps = []
         
@@ -704,14 +704,14 @@ class SysMLDAA(OntoDAA):
         
         bProps = [[1, 0, "conforms_to"],
                   [2, 0, "conforms_to"],
-                  [2, 3, "is about"],
-                  [2, 4, "has basis"],
-                  [5, 4, "has basis"],
-                  [4, 3, "is model of"],
+                  [2, 3, "is_about"],
+                  [2, 4, "has_basis"],
+                  [5, 4, "has_basis"],
+                  [4, 3, "is_model_of"],
                   [0, 4, "specifies"],
-                  [5, 3, "is a measurement of"],
-                  [1, 2, "has part"],
-                  [1, 5, "has part"]]
+                  [5, 3, "is_a_measurement_of"],
+                  [1, 2, "has_part"],
+                  [1, 5, "has_part"]]
         
         cProps = [[0, 0, "represents"],
                   [1, 1, "represents"],
